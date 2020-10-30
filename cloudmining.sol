@@ -29,13 +29,10 @@ Get up 5 % profit every month with a contract Cloud Mining!
 * 2. Confirm your transaction in the history of your application or etherscan.io, indicating the address of your wallet.
 * Take profit by sending 0 eth to contract (profit is calculated every second).
 *
+*@DEV https://github.com/alexburndev/miningmasters/blob/main/cloudmining.sol
 **/
 
-contract ERC20Token
-{
-    mapping (address => uint256) public balanceOf;
-    function transfer(address _to, uint256 _value) public;
-}
+
 
 library SafeMath {
     /**
@@ -130,13 +127,13 @@ library SafeMath {
     }
 }
 
-contract CloudMinig
+contract CloudMinig_byMiningMasters 
 {
     using SafeMath for uint256;
     
     address payable public owner = 0x1a08070FFE5695aB0Eb4612640EeC11bf2Cf58eE;
     address payable public addressSupportProject = 0x009AE8DDCBF8aba5b04d49d034146A6b8E3a8B0a;
-    address payable public addressAdverstingProject = 0x76E40e08e10c8D7D088b20D26349ec52932F8BC3;
+    address payable public addressAdverstingProject = 0x54a39674A0c22Cb2f9022f285b366a4f4d525266;
     
 
     
@@ -224,11 +221,7 @@ contract CloudMinig
           addr := mload(add(bys,20))
         } 
     }
-    // function for transfer any token from contract
-    function transferTokens (address token, address target, uint256 amount) onlyOwner public
-    {
-        ERC20Token(token).transfer(target, amount);
-    }
+    
     
     
     function getInfo(address investor) view public returns (uint256 totalFunds, uint256 pendingReward, 
@@ -305,7 +298,7 @@ contract CloudMinig
     
     function getrewardInfo(address investor) view public returns (uint256 totalFunds, uint256 pendingReward, 
     uint256 totalProfit,uint _yourProcent)
-    //,uint _minBalance, uint _yourToken_Balance )
+    
     {
         InvestorData memory data = investors[investor];
         totalFunds = data.funds;
